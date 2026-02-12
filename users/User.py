@@ -14,19 +14,17 @@ class User:
         self.email = email
         self.license = license
         self.license = post
-        
-    def __repr__(self):
-        return      
      
     @classmethod   
     def create_user(cls):
-        new_user = {
-            "name" : input("Please enter a name: \n"),
+        new_user = input("Please enter a name: \n"),
+        user_dict = {
+            "name" : new_user,
             "email" : input("Please enter an email: \n "),
             "license" : input("Please enter your license number: \n"),
             }
-        cls.users.append(new_user)
-        return new_user 
+        cls.users[new_user] = user_dict
+        return f"You created a new user!"
     
     def create_post():
         user = input("What is your username?: ")
@@ -35,7 +33,7 @@ class User:
             User.posted.append(user_post)
             return f" user {user} :posted {user_post}"
         else:
-            return print("User not found , please create a user first. ")
+            return "User not found , please create a user first. "
             
            
     @property
