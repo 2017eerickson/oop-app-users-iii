@@ -1,4 +1,11 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM python:3.11-slim 
+
+WORKDIR /the/workdir/path
+
+COPY . .
+
+RUN pip install --no-cache-dir pytest
 
 # Install PostgreSQL server + client
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -20,4 +27,4 @@ RUN service postgresql start && \
 EXPOSE 5432
 
 # Start PostgreSQL automatically
-CMD ["bash", "-c", "service postgresql start && tail -f /dev/null"]
+CMD ["bash", "-c", "service postgresql start && tail -f /dev/null", "pytest"]
