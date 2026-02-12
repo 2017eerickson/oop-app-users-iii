@@ -17,7 +17,11 @@ def user_menu():
                 print(new_post)
                 user_menu()
             case "3":
-                view_users = User.users()
+                view_users = User.users
+                print(view_users)
+                user_menu()
+            case "4":
+                update_users = User.users
                 print(view_users)
                 user_menu()
             case "6":
